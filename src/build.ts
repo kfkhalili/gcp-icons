@@ -7,7 +7,7 @@ import { join } from 'node:path';
 import { processToDist } from './cleanup.js';
 import { downloadAndExtract } from './download.js';
 import { generateManifest } from './generate.data.js';
-import { rmRecursive } from './lib/io.js';
+import { rmRecursive } from './lib/io';
 
 const TEMP_DIR = join(process.cwd(), '.gcp-icons-temp');
 const DIST_DIR = join(process.cwd(), 'dist');

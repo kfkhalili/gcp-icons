@@ -6,12 +6,12 @@
 import { promises } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { writeFileUtf8 } from './lib/io.js';
+import { writeFileUtf8 } from './lib/io';
 import {
   baseNameWithoutExt,
   buildManifest,
   isSvgFileName,
-} from './lib/pure.js';
+} from './lib/pure';
 
 /**
  * Reads icons from dist/icons and writes the manifest (index.js + index.d.ts) into distDir.

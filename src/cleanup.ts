@@ -5,12 +5,12 @@
 
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { collectSvgPaths, copyFile, ensureDir } from './lib/io.js';
+import { collectSvgPaths, copyFile, ensureDir } from './lib/io';
 import {
   baseNameWithoutExt,
   lastPathSegment,
   resolveOutputEntries,
-} from './lib/pure.js';
+} from './lib/pure';
 
 /**
  * Traverses tempDir, collects SVG paths (excluding __MACOSX, .DS_Store, non-SVG),
