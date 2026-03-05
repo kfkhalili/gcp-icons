@@ -1,26 +1,30 @@
+# Tag-based release: runs only when you push a tag matching v* (e.g. v1.0.3).
+# Flow: bump version in package.json → commit & push to main → git tag vX.Y.Z → git push origin vX.Y.Z
+# Uses npm Trusted Publishing (OIDC). One-time setup: npmjs.com → Package → Trusted Publisher → GitHub Actions, workflow: publish.yml
 name: Release and publish
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "v*"
+
+permissions:
+  id-token: write   # Required for npm Trusted Publishing (OIDC)
+  contents: read
 
 jobs:
   release:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write   # allow pushing tags if you later add tagging
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Use Node from .nvmrc
+      # Node 22.14+ required for npm Trusted Publishing
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version-file: '.nvmrc'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -33,12 +37,5 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      # IMPORTANT:
-      # - We expect the version to already be bumped in package.json in the commit merged to main.
-      # - This job publishes that version to npm using the NPM_TOKEN secret (no OTP in CI).
       - name: Publish to npm
-        if: github.ref == 'refs/heads/main'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          npm publish
+        run: npm publish
