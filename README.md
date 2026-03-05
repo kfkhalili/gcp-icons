@@ -79,4 +79,4 @@ You can run steps individually (e.g. `download:icons` then `cleanup:icons` then 
 
 ## License
 
-MIT. Icon assets are used in accordance with [Google Cloud branding guidelines](https://cloud.google.com/branding-guidelines).
+MIT. Icon assets are sourced from [Google Cloud’s official icon library](https://cloud.google.com/icons); refer to that page for current usage guidelines.
