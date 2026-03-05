@@ -1,8 +1,13 @@
 {
   "name": "gcp-icons",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Static asset library for Google Cloud Platform (GCP) icons — official SVG set, unmodified",
-  "keywords": ["gcp", "google-cloud", "icons", "svg"],
+  "keywords": [
+    "gcp",
+    "google-cloud",
+    "icons",
+    "svg"
+  ],
   "license": "MIT",
   "author": {
     "name": "Khalid Alkhalili",
@@ -42,7 +47,9 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "support": {
     "backing": {
       "npm-funding": true
