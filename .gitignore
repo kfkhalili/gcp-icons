@@ -1,0 +1,19 @@
+node_modules
+.pnpm-store
+
+.tmp
+
+build
+icons
+lib
+svg
+downloadedFile.zip
+dist
+.gcp-icons-temp
+.vscode
+
+# macOS (anywhere in repo)
+**/.DS_Store
+
+# .log files
+*.log

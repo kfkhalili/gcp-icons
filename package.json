@@ -1,0 +1,51 @@
+{
+  "name": "gcp-icons",
+  "version": "1.0.0",
+  "description": "Static asset library for Google Cloud Platform (GCP) icons — official SVG set, unmodified",
+  "keywords": ["gcp", "google-cloud", "icons", "svg"],
+  "license": "MIT",
+  "author": {
+    "name": "Khalid Alkhalili",
+    "email": "info@khalidalkhalili.com",
+    "url": "https://www.khalidalkhalili.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kfkhalili/gcp-icons.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kfkhalili/gcp-icons/issues"
+  },
+  "homepage": "https://gcp-icons.vercel.app/",
+  "scripts": {
+    "lint": "biome check .",
+    "lint:fix": "biome check --fix .",
+    "fmt": "biome format .",
+    "fmt:fix": "biome format --write .",
+    "clean": "rm -rf ./dist ./.gcp-icons-temp",
+    "download:icons": "tsx ./src/download.ts",
+    "cleanup:icons": "tsx ./src/cleanup.ts",
+    "generate:data": "tsx ./src/generate.data.ts",
+    "build": "pnpm clean && tsx ./src/build.ts",
+    "publish:lib:latest": "npm publish",
+    "publish:lib:beta": "npm publish --tag beta",
+    "publish:lib:canary": "npm publish --tag canary"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.5",
+    "@types/adm-zip": "0.5.7",
+    "@types/node": "25.3.3",
+    "adm-zip": "0.5.16",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "files": ["dist"],
+  "support": {
+    "backing": {
+      "npm-funding": true
+    }
+  }
+}
