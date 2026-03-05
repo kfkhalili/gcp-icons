@@ -5,7 +5,7 @@ node_modules
 
 build
 icons
-lib
+/lib
 svg
 downloadedFile.zip
 dist
