@@ -37,6 +37,10 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      # npm 11.5.1+ required for Trusted Publishing (OIDC); Node 22 ships with npm 10.x
+      - name: Install npm for Trusted Publishing
+        run: npm install -g npm@11
+
       - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ""
