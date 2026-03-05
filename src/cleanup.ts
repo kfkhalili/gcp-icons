@@ -5,12 +5,12 @@
 
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { collectSvgPaths, copyFile, ensureDir } from './lib/io';
+import { collectSvgPaths, copyFile, ensureDir } from './lib/io.ts';
 import {
   baseNameWithoutExt,
   lastPathSegment,
   resolveOutputEntries,
-} from './lib/pure';
+} from './lib/pure.ts';
 
 /**
  * Traverses tempDir, collects SVG paths (excluding __MACOSX, .DS_Store, non-SVG),

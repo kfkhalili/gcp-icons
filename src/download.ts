@@ -5,7 +5,7 @@
 
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { downloadFile, ensureDir, unlink, unzipFile } from './lib/io';
+import { downloadFile, ensureDir, unlink, unzipFile } from './lib/io.ts';
 
 // Official GCP icon ZIPs: categories (e.g. Compute, Storage) and core products (e.g. BigQuery, GKE).
 const GCP_ZIP_URLS = [

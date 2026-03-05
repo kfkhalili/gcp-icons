@@ -30,13 +30,15 @@
     "build": "pnpm clean && tsx ./src/build.ts",
     "publish:lib:latest": "npm publish",
     "publish:lib:beta": "npm publish --tag beta",
-    "publish:lib:canary": "npm publish --tag canary"
+    "publish:lib:canary": "npm publish --tag canary",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.5",
     "@types/adm-zip": "0.5.7",
     "@types/node": "25.3.3",
     "adm-zip": "0.5.16",
+    "husky": "9.1.7",
     "tsx": "4.21.0",
     "typescript": "5.9.3"
   },
