@@ -19,12 +19,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Node 22.14+ required for npm Trusted Publishing
+      # Node 22.14+ required for npm Trusted Publishing. Do NOT set registry-url or NODE_AUTH_TOKEN
+      # so npm uses OIDC only (Trusted Publisher). Remove NPM_TOKEN from repo Secrets if present.
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-          registry-url: "https://registry.npmjs.org"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -38,4 +38,6 @@ jobs:
         run: pnpm run build
 
       - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ""
         run: npm publish
