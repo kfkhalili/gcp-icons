@@ -10,7 +10,7 @@ import https from 'node:https';
 import { join } from 'node:path';
 import type { URL } from 'node:url';
 import AdmZip from 'adm-zip';
-import { isSvgFileName, shouldExcludePathSegment } from './pure.js';
+import { isSvgFileName, shouldExcludePathSegment } from './pure.ts';
 
 /** Streams a URL to disk; rejects on non-200 or if the file is missing after the stream finishes. */
 export async function downloadFile(
@@ -19,8 +19,10 @@ export async function downloadFile(
 ): Promise<void> {
   const writeStream = createWriteStream(filePath);
   return new Promise((resolve, reject) => {
-    https.get(url, (response) => {
+    const req = https.get(url, (response) => {
       if (response.statusCode !== 200) {
+        writeStream.destroy();
+        response.destroy();
         reject(
           new Error(
             `Failed to download: ${response.statusCode} ${response.statusMessage}`,
@@ -34,13 +36,20 @@ export async function downloadFile(
           reject(new Error(`Downloaded file missing: ${filePath}`));
         else resolve();
       });
-      response.on('error', reject);
+      response.on('error', (err) => {
+        writeStream.destroy();
+        reject(err);
+      });
       writeStream.on('error', reject);
+    });
+    req.on('error', (err) => {
+      writeStream.destroy();
+      reject(err);
     });
   });
 }
 
-/** Extracts a ZIP into destPath; overwrite=true so multiple GCP ZIPs can merge into one dir. */
+/** Extracts a ZIP into destPath (e.g. tempDir/category or tempDir/core-products). */
 export function unzipFile(
   zipFilePath: string,
   destPath: string,

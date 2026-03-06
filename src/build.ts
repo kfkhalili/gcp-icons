@@ -1,5 +1,6 @@
 /**
- * GCP Icons build pipeline: download → cleanup (copy to dist/icons) → generate manifest.
+ * GCP Icons build pipeline: download → cleanup (copy to dist/icons + metadata) → generate manifest.
+ * Manifest includes icons (paths), categories (official GCP categories), and iconToCategory.
  * Orchestrates download.ts, cleanup.ts, and generate.data.ts; removes temp dir when done.
  */
 

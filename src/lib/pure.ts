@@ -117,3 +117,25 @@ export function buildManifest(
     {},
   );
 }
+
+/** Source of the icon: category-icons.zip vs core-products-icons.zip. */
+export type IconSource = 'category' | 'core-products';
+
+/**
+ * Derives source (category vs core-products) and folder-derived category from a relative path under temp
+ * (e.g. "category/Compute/foo.svg" or "core-products/Unique Icons/bar.svg").
+ * First segment = source, second segment = category folder name. generate.data applies the authoritative
+ * icon-to-category mapping (from cloud.google.com/products) for the final category used in the manifest.
+ */
+export function getCategoryFromRelativePath(relativePath: string): {
+  source: IconSource;
+  categoryKey: string;
+  categoryName: string;
+} {
+  const normalized = relativePath.replace(/\\/g, '/');
+  const segments = normalized.split('/').filter(Boolean);
+  const source = segments[0] === 'core-products' ? 'core-products' : 'category';
+  const categoryName = segments[1] ?? 'General';
+  const categoryKey = toKebabCase(categoryName) || 'general';
+  return { source, categoryKey, categoryName };
+}

@@ -1,0 +1,13 @@
+{
+  "ai-ml": "AI/ML",
+  "infrastructure": "Infrastructure",
+  "databases-and-analytics": "Databases and analytics",
+  "developer-tools": "Developer tools",
+  "app-development": "App development",
+  "integration-services": "Integration services",
+  "management-tools": "Management tools",
+  "security-and-identity": "Security and identity",
+  "web-and-app-hosting": "Web and app hosting",
+  "productivity-and-collaboration": "Productivity and collaboration",
+  "industry": "Industry"
+}

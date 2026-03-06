@@ -30,11 +30,14 @@ export async function downloadAndExtract(tempDir: string): Promise<void> {
     }),
   );
 
-  // Extract all into the same temp dir; adm-zip merges contents (overwrites on collision).
+  // Extract each ZIP into its own subdir so we preserve source (category vs core-products) and folder structure.
+  const subdirs = ['category', 'core-products'] as const;
   await Promise.all(
-    zipPaths.map(async (zipPath) => {
-      await unzipFile(zipPath, tempDir);
-      console.info(`Extracted: ${zipPath}`);
+    zipPaths.map(async (zipPath, i) => {
+      const subdir = join(tempDir, subdirs[i]);
+      await ensureDir(subdir);
+      await unzipFile(zipPath, subdir);
+      console.info(`Extracted: ${zipPath} -> ${subdir}`);
     }),
   );
 

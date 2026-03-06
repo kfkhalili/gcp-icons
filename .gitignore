@@ -7,7 +7,6 @@ build
 icons
 /lib
 svg
-downloadedFile.zip
 dist
 .gcp-icons-temp
 .vscode
