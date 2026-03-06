@@ -46,7 +46,8 @@ jobs:
           NODE_AUTH_TOKEN: ""
         run: npm publish
 
-      # Trigger showcase redeploy so it picks up the new package. Optional: add repo secret VERCEL_DEPLOY_HOOK_SHOWCASE (from Vercel → gcp-icons-showcase → Settings → Deploy Hooks).
+      # Trigger showcase redeploy so it picks up the new package. Set repo secret VERCEL_DEPLOY_HOOK_SHOWCASE (Vercel → gcp-icons-showcase → Deploy Hooks). If unset, this step fails but the release still succeeds.
       - name: Trigger showcase deploy
-        if: success() && secrets.VERCEL_DEPLOY_HOOK_SHOWCASE != ''
+        if: success()
+        continue-on-error: true
         run: curl -fsS -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_SHOWCASE }}"
