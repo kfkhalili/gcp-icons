@@ -1,6 +1,6 @@
 {
   "name": "gcp-icons",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "packageManager": "pnpm@9.15.0",
   "description": "Static asset library for Google Cloud Platform (GCP) icons — official SVG set, unmodified, with categories and iconToCategory for navigation",
   "keywords": ["gcp", "google-cloud", "icons", "svg", "categories"],
