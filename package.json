@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/kfkhalili/gcp-icons/issues"
   },
-  "homepage": "https://gcp-icons.vercel.app/",
+  "homepage": "https://gcp-icons-showcase.vercel.app/",
   "scripts": {
     "lint": "biome check .",
     "lint:fix": "biome check --fix .",

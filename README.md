@@ -2,7 +2,7 @@
 
 Static asset library for **Google Cloud Platform (GCP) icons** — official SVG set, unmodified.
 
-- **Homepage:** [gcp-icons.vercel.app](https://gcp-icons.vercel.app/)
+- **Homepage:** [gcp-icons-showcase.vercel.app](https://gcp-icons-showcase.vercel.app/)
 - **Repository:** [github.com/kfkhalili/gcp-icons](https://github.com/kfkhalili/gcp-icons)
 - **npm:** [gcp-icons](https://www.npmjs.com/package/gcp-icons)
 
