@@ -115,6 +115,15 @@ const allCategories = Object.entries(gcp.categories).map(([key, { name, iconKeys
 
 You can run steps individually (e.g. `download:icons` then `cleanup:icons` then `generate:data`) or use `build` to do all at once.
 
+## Release and showcase
+
+Releases are tag-based: push a tag `v*` (e.g. `v1.0.6`) to run the workflow, which publishes to npm. To redeploy the [showcase site](https://gcp-icons-showcase.vercel.app/) on each release, add a **Vercel Deploy Hook** and connect it to this repo:
+
+1. In **Vercel**: open the **gcp-icons-showcase** project → **Settings** → **Git** → **Deploy Hooks** → create a hook (e.g. “Release from gcp-icons”) and copy the URL.
+2. In **GitHub**: this repo → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**: name `VERCEL_DEPLOY_HOOK_SHOWCASE`, value = the deploy hook URL.
+
+After that, every successful publish from a `v*` tag will trigger a showcase redeploy so the site picks up the new package version.
+
 ## License
 
 MIT. Icon assets are sourced from [Google Cloud’s official icon library](https://cloud.google.com/icons); refer to that page for current usage guidelines.
